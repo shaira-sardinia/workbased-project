@@ -1,24 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import LogIn from "./Pages/LogInPage/LogIn";
+import Dashboard from "./Pages/Dashboard/Dashboard";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    //use of Router is to supply browser with asynchronous URL that corresponds to the data shown on webpage
+    //when user enters URL, the route equals one of the pathways in the route folder, and user is sent to that route
+    <Router>
+      <Routes>
+        {/* <Route exact path="/" element={<LogIn />} /> */}
+        <Route path="/" element={<Dashboard />} />
+      </Routes>
+    </Router>
   );
 }
 

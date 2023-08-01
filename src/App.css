@@ -2,37 +2,130 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  min-height: 80vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header {
+  min-height: 10vh;
+  margin: 0;
+  padding-right: 16px;
+  padding-left: 10px;
+  font-weight: 500;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  background-color: #ffffff;
+  padding-left: 7rem;
+  padding-right: 7rem;
+  height: 85vh;
+}
+
+.title {
+  color: #000;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+}
+
+.custom-select {
+  width: 230px;
+  padding: 5px;
+  border-radius: 5px;
+}
+.dropdown-selection {
+  text-align: center;
+}
+
+.dropdown-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.upload-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.upload-container-each {
+  border: 1px dashed #ccc;
+  height: 280px;
+  width: 100%;
+  padding: 5rem;
+  text-align: center;
+  cursor: pointer;
+  margin: auto;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.status-bar {
+  display: flex;
+}
+
+.container-progress {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 20px;
+}
+
+.local-date {
+  color: #575757;
+}
+
+.reconcile-button {
+  min-width: 400px;
+  border-radius: 5px;
+  border: none;
+  padding: 2px;
+}
+.idle {
+  color: #ffffff;
+  background-color: #000000;
+}
+.progress {
+  /* button::before 
+  content: "";
+  position: absolute; */
+}
+.success {
   color: white;
+  background-color: #10aa16;
+}
+.failed {
+  color: white;
+  background-color: #df2317;
 }
 
-.App-link {
-  color: #61dafb;
+.btn-success-openfolder {
+  background-color: #ffffff;
+  border: none;
+  text-decoration: underline;
+}
+.error-description {
+  padding: 1px;
+  color: #575757;
+}
+.btn-restart {
+  background-color: #ffffff;
+  min-width: 400px;
+  border: none;
+  padding-top: 6px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tooltip-svg {
+  margin-left: 5px;
+  margin-bottom: 5px;
 }
+/* .custom-tooltip {
+  --bs-tooltip-bg: var(--bd-gray-bg);
+  --bs-tooltip-color: var(--bs-black);
+} */

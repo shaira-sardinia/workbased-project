@@ -19,7 +19,7 @@ function Dashboard() {
   return (
     <div className="container">
       <div className="header row d-flex align-items-end py-2">
-        <div className="col-md-6 text-start ">Good morning!</div>
+        <div className="col-md-6 text-start ">Good day Name!</div>
         <div className="col-md-3 text-end overflow-x-visible">
           Today's date is{" "}
           <span className="local-date">
@@ -27,11 +27,13 @@ function Dashboard() {
           </span>
           .
         </div>
-        <div className="col-md-3 text-end">Help</div>
+        <div className="col-md-3 text-end">
+          <a href="mailto:support@accenture.com">Help</a>
+        </div>
       </div>
 
       <div className="dashboard d-flex py-3">
-        <div className="title pt-3 pb-2">Reconciliation Dashboard</div>
+        <div className="title pt-5 pb-2">Reconciliation Dashboard</div>
 
         <div className="dropdown-container gap-3 py-3">
           <MonthSelectionDropdown />

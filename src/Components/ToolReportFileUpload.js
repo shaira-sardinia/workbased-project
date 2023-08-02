@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import Tooltip from "./Tooltip.js";
+import { ReactComponent as ExcelImage } from "../Assets/ExcelImage.svg";
 
 const ToolReportFileUpload = ({ onSelect, ...otherProps }) => {
   const fileInputField = useRef(null);
@@ -76,8 +77,9 @@ const ToolReportFileUpload = ({ onSelect, ...otherProps }) => {
             browse
           </span>
         </p>
-        {/* ADD PHOTO HERE */}
-
+        <div className="pb-3">
+          <ExcelImage />
+        </div>
         <div>{selectedToolFile && <p>{selectedToolFile.name}</p>}</div>
       </div>
       {/* <button onClick={handleFileSubmit}>Upload File</button> */}

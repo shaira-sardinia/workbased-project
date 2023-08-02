@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import Tooltip from "./Tooltip.js";
+import { ReactComponent as ExcelImage } from "../Assets/ExcelImage.svg";
 
 const CadoReportFileUpload = ({ onSelect, ...otherProps }) => {
   const fileInputField = useRef(null);
@@ -87,8 +88,9 @@ const CadoReportFileUpload = ({ onSelect, ...otherProps }) => {
             browse
           </span>
         </p>
-        {/* ADD PHOTO HERE */}
-
+        <div className="pb-3">
+          <ExcelImage />
+        </div>
         <div>{selectedCadoFile && <p>{selectedCadoFile.name}</p>}</div>
       </div>
       {/* <button onClick={handleFileSubmit}>Upload File</button> */}

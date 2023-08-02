@@ -19,7 +19,7 @@ const Tooltip = ({ tooltiptext }) => {
   return (
     <>
       <svg
-        xmlns="http://www.w3.org/2000/svg"
+        xmlns="hattp://www.w3.org/2000/svg"
         shape-rendering="geometricPrecision"
         text-rendering="geometricPrecision"
         image-rendering="optimizeQuality"

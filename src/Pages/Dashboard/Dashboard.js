@@ -33,7 +33,7 @@ function Dashboard() {
       </div>
 
       <div className="dashboard d-flex py-3">
-        <div className="title pt-5 pb-2">Reconciliation Dashboard</div>
+        <div className="title pt-4 pb-2">Reconciliation Dashboard</div>
 
         <div className="dropdown-container gap-3 py-3">
           <MonthSelectionDropdown />

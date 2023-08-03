@@ -7,7 +7,7 @@
 }
 
 .header {
-  min-height: 10vh;
+  min-height: 9vh;
   margin: 0;
   padding-right: 16px;
   padding-left: 10px;
@@ -114,7 +114,8 @@ a:active {
   border: none;
   padding: 2px;
   color: white;
-  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   font-size: 16px;
   text-align: center;
 }
@@ -148,7 +149,6 @@ a:active {
   background-color: #ffffff;
   min-width: 400px;
   border: none;
-  padding-top: 6px;
 }
 .btn-restart:hover {
   color: #575757;
@@ -172,13 +172,16 @@ a:active {
   padding: 2px;
   align-items: center;
   justify-content: center;
-  box-shadow: 5px 5px 8px rgba(255, 251, 251, 0.1);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   overflow: hidden;
 }
 .progress::before {
   content: "";
   position: absolute;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(252, 252, 252, 0.234);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   width: 100%;
   height: 100%;
   border-radius: 5px;

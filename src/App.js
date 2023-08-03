@@ -9,8 +9,8 @@ function App() {
     //when user enters URL, the route equals one of the pathways in the route folder, and user is sent to that route
     <Router>
       <Routes>
-        {/* <Route exact path="/" element={<LogIn />} /> */}
-        <Route path="/" element={<Dashboard />} />
+        <Route exact path="/" element={<LogIn />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );

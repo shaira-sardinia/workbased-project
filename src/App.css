@@ -106,34 +106,31 @@ a:active {
 }
 
 .reconcile-button {
+  position: relative;
   min-width: 400px;
+  width: 100%;
+  height: 30px;
   border-radius: 5px;
   border: none;
   padding: 2px;
+  color: white;
   box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  text-align: center;
 }
 .idle {
-  color: #ffffff;
   background-color: #000000;
 }
 .idle:hover {
   background-color: #242424;
   transition: 0.8s;
 }
-.progress {
-  /* button::before 
-  content: "";
-  position: absolute; */
-}
 .success {
-  color: white;
   background-color: #10aa16;
 }
 .failed {
-  color: white;
   background-color: #df2317;
 }
-
 .btn-success-openfolder {
   background-color: #ffffff;
   border: none;
@@ -161,4 +158,66 @@ a:active {
 .tooltip-svg {
   margin-left: 5px;
   margin-bottom: 5px;
+}
+
+/* Status Bar animations */
+.progress {
+  background-color: #000000;
+  position: relative;
+  min-width: 400px;
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  padding: 2px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 5px 8px rgba(255, 251, 251, 0.1);
+  overflow: hidden;
+}
+.progress::before {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.2);
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  top: 0;
+  left: -100%;
+  animation: progress 2s ease-in-out forwards;
+}
+@keyframes progress {
+  0% {
+    left: -100%;
+  }
+  10% {
+    left: -97%;
+  }
+  20% {
+    left: -92%;
+  }
+  30% {
+    left: -82%;
+  }
+  30% {
+    left: -62%;
+  }
+  40% {
+    left: -38%;
+  }
+  50% {
+    left: -18%;
+  }
+  60% {
+    left: -14%;
+  }
+  80% {
+    left: -7%;
+  }
+  90% {
+    left: -3%;
+  }
+  100% {
+    left: 0%;
+  }
 }

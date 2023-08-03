@@ -4,8 +4,11 @@ function StatusBar({ selectedCadoFile, selectedToolFile }) {
   const [reconciliationStatus, setReconciliationStatus] = useState("idle");
   const [status, setStatus] = useState("");
   const [errorDetails, setErrorDetails] = useState("");
+  const [showAnimation, setShowAnimation] = useState(false);
+  const [showAnimationTimeout, setShowAnimationTimeout] = useState(null);
 
   const handleReconcileClick = () => {
+    setShowAnimation(true); // show progress animation
     // Implement  logic to trigger the reconciliation process in the backend here
     //Example: '/reconcile'
     const reconciliationEndpoint = "/reconcile";
@@ -23,7 +26,18 @@ function StatusBar({ selectedCadoFile, selectedToolFile }) {
 
     //updating reconciliationStatus state
     setReconciliationStatus(randomOutcome);
+
+    //delaying for 2 seconds before updating the status
+    setShowAnimationTimeout(
+      setTimeout(() => {
+        setReconciliationStatus(randomOutcome);
+        setShowAnimation(false); // hide the progress animation
+      }, 2000)
+    );
+
+    setReconciliationStatus("inProgress");
   };
+
   //Make the backend request to start the reconciliation process
   // fetch(reconciliationEndpoint, {
   //   method: "POST",
@@ -53,6 +67,7 @@ function StatusBar({ selectedCadoFile, selectedToolFile }) {
   // });
 
   const handleRestartClick = () => {
+    clearTimeout(setShowAnimationTimeout);
     handleReconcileClick(); // Call the function to start the backend process again
   };
 
@@ -88,9 +103,14 @@ function StatusBar({ selectedCadoFile, selectedToolFile }) {
       )}
 
       {reconciliationStatus === "inProgress" && (
-        <button className="reconcile-button progress" disabled>
-          Reconciling...
-        </button>
+        <div className="container-progress">
+          <button
+            className={`reconcile-button ${showAnimation ? "progress" : ""}`}
+            disabled
+          >
+            Reconciling...
+          </button>
+        </div>
       )}
 
       {reconciliationStatus === "success" && (

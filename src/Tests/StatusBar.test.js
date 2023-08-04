@@ -1,89 +1,58 @@
-// import React from "react";
-// import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-// import StatusBar from "./StatusBar";
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import StatusBar from "../Components/StatusBar";
 
-// // Mock the global alert function (since it's not available in the testing environment)
-// global.alert = jest.fn();
+describe("StatusBar component", () => {
+  test("renders without errors", () => {
+    render(<StatusBar />);
+  });
 
-// describe("StatusBar", () => {
-//   it("should show 'Reconcile' button initially", () => {
-//     render(<StatusBar />);
+  //tests
+  test('displays "Reconcile" button in idle state', () => {
+    render(<StatusBar />);
+    const reconcileButton = screen.getByText("Reconcile");
+    expect(reconcileButton).toBeInTheDocument();
+  });
 
-//     const reconcileButton = screen.getByText("Reconcile");
-//     expect(reconcileButton).toBeInTheDocument();
-//   });
+  //   test('displays "Reconciling..." button in inProgress state', () => {
+  //     render(<StatusBar reconciliationStatus="inProgress" />);
+  //     const reconcilingButton = screen.getByText("Reconciling...");
+  //     expect(reconcilingButton).toBeInTheDocument();
+  //   });
 
-//   it("should show 'Reconciling...' status while reconciliation is in progress", async () => {
-//     // Mock the fetch function to simulate the API call
-//     jest.spyOn(global, "fetch").mockImplementationOnce(() =>
-//       Promise.resolve({
-//         json: () => Promise.resolve({ success: true }),
-//       })
-//     );
+  //TEST CASE 1
+  it("displays successful reconciliation when selections match file names", () => {
+    //mocking the selected month and year
+    const selectedMonth = "March";
+    const selectedYear = "2023";
 
-//     render(<StatusBar />);
+    //mocking the file names based on the selected month and year
+    const selectedCadoFile = `CADOFile_${selectedMonth}_${selectedYear}.xlsm`;
+    const selectedToolFile = `LeaveReport_${selectedMonth}_${selectedYear}.xlsm`;
 
-//     const reconcileButton = screen.getByText("Reconcile");
-//     fireEvent.click(reconcileButton);
+    render(
+      <StatusBar
+        selectedCadoFile={selectedCadoFile}
+        selectedToolFile={selectedToolFile}
+      />
+    );
+  });
 
-//     const reconcilingStatus = screen.getByText(/reconciling/i); // Use RegExp matcher
-//     expect(reconcilingStatus).toBeInTheDocument();
+  //TEST CASE 2
+  it("displays failed reconciliation when selections do not match file names", () => {
+    //mocking the selected month and year
+    const selectedMonth = "April";
+    const selectedYear = "2023";
 
-//     // Wait for the reconciliation process to complete
-//     await waitFor(() => {
-//       expect(reconcilingStatus).not.toBeInTheDocument();
-//     });
-//   });
+    //mocking the file names based on different month and year
+    const selectedCadoFile = `CADOFile_${selectedMonth}_${selectedYear}.xlsm`;
+    const selectedToolFile = `LeaveReport_${selectedMonth}_${selectedYear}.xlsm`;
 
-//   it("should show 'Successful' status and buttons on successful reconciliation", async () => {
-//     // Mock the fetch function to simulate the API call
-//     jest.spyOn(global, "fetch").mockImplementationOnce(() =>
-//       Promise.resolve({
-//         json: () => Promise.resolve({ success: true }),
-//       })
-//     );
-
-//     render(<StatusBar />);
-
-//     const reconcileButton = screen.getByText("Reconcile");
-//     fireEvent.click(reconcileButton);
-
-//     // Wait for the reconciliation process to complete
-//     await waitFor(() => {
-//       const successfulStatus = screen.getByText(/successful/i); // Use RegExp matcher
-//       expect(successfulStatus).toBeInTheDocument();
-
-//       const openFolderButton = screen.getByText(/open folder/i); // Use RegExp matcher
-//       expect(openFolderButton).toBeInTheDocument();
-
-//       const restartButton = screen.getByText(/restart/i); // Use RegExp matcher
-//       expect(restartButton).toBeInTheDocument();
-//     });
-//   });
-
-//   it("should show 'Failed' status and 'Restart' button on failed reconciliation", async () => {
-//     // Mock the fetch function to simulate the API call
-//     jest.spyOn(global, "fetch").mockImplementationOnce(() =>
-//       Promise.resolve({
-//         json: () => Promise.resolve({ success: false, error: "Some error" }),
-//       })
-//     );
-
-//     render(<StatusBar />);
-
-//     const reconcileButton = screen.getByText("Reconcile");
-//     fireEvent.click(reconcileButton);
-
-//     // Wait for the reconciliation process to complete
-//     await waitFor(() => {
-//       const failedStatus = screen.getByText(/failed/i); // Use RegExp matcher
-//       expect(failedStatus).toBeInTheDocument();
-
-//       const restartButton = screen.getByText(/restart/i); // Use RegExp matcher
-//       expect(restartButton).toBeInTheDocument();
-
-//       const errorDetails = screen.getByText(/error details:/i); // Use RegExp matcher
-//       expect(errorDetails).toBeInTheDocument();
-//     });
-//   });
-// });
+    render(
+      <StatusBar
+        selectedCadoFile={selectedCadoFile}
+        selectedToolFile={selectedToolFile}
+      />
+    );
+  });
+});

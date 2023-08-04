@@ -4,8 +4,8 @@ import "./Login.css";
 
 function LogIn() {
   return (
-    <div>
-      <h2> Log in using your Accenture ID.</h2>
+    <div className="position-absolute top-50 start-50 translate-middle">
+      <p className="pb-3 text-center"> Log in using your Accenture ID.</p>
       <LogInForm />
     </div>
   );

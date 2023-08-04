@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 
-function YearSelectionDropdown() {
+function YearSelectionDropdown({ onSelect }) {
   const [selectedYear, setSelectedYear] = useState("");
 
   const handleYearChange = (event) => {
-    setSelectedYear(event.target.value);
-    // Call a function to send the selected year to the backend
-    sendDataToBackend(event.target.value);
+    const yearValue = event.target.value;
+    onSelect(yearValue);
+    setSelectedYear(yearValue);
+    sendDataToBackend(yearValue);
+
+    console.log("Year:", yearValue);
   };
 
   const sendDataToBackend = (year) => {
+    console.log("Selected year:", year);
     // Implement your logic to send the selected year to the backend
     //   fetch("/api/storeSelection", {
     //     method: "POST",

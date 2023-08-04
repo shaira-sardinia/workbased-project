@@ -9,6 +9,8 @@ function Dashboard() {
   const currentDate = new Date();
   const [selectedCadoFile, setSelectedCadoFile] = useState(null);
   const [selectedToolFile, setSelectedToolFile] = useState(null);
+  const [selectedMonth, setSelectedMonth] = useState("");
+  const [selectedYear, setSelectedYear] = useState("");
 
   const options = {
     month: "long",
@@ -16,10 +18,13 @@ function Dashboard() {
     year: "numeric",
   };
 
+  console.log("selectedMonth", selectedMonth);
+  console.log("selectedYear", selectedYear);
+
   return (
     <div className="container">
       <div className="header row d-flex align-items-end py-2">
-        <div className="col-md-6 text-start ">Good day Name!</div>
+        <div className="col-md-6 text-start ">Good day!</div>
         <div className="col-md-3 text-end overflow-x-visible">
           Today's date is{" "}
           <span className="local-date">
@@ -36,8 +41,14 @@ function Dashboard() {
         <div className="title pt-4 pb-2">Reconciliation Dashboard</div>
 
         <div className="dropdown-container gap-3 py-3">
-          <MonthSelectionDropdown />
-          <YearSelectionDropdown />
+          <MonthSelectionDropdown
+            selectedMonth={selectedMonth}
+            onSelect={(month) => setSelectedMonth(month)}
+          />
+          <YearSelectionDropdown
+            selectedYear={selectedYear}
+            onSelect={(year) => setSelectedYear(year)}
+          />
         </div>
 
         <div className="upload-container gap-5 pt-3 pb-5">
@@ -53,6 +64,8 @@ function Dashboard() {
           <StatusBar
             selectedCadoFile={selectedCadoFile}
             selectedToolFile={selectedToolFile}
+            selectedMonth={selectedMonth}
+            selectedYear={selectedYear}
           />
         </div>
       </div>

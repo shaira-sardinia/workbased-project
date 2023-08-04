@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 
-function MonthSelectionDropdown() {
+function MonthSelectionDropdown({ onSelect }) {
   const [selectedMonth, setSelectedMonth] = useState("");
 
   const handleMonthChange = (event) => {
-    setSelectedMonth(event.target.value);
-    // Call a function to send the selected month to the backend
-    sendDataToBackend(event.target.value);
+    const monthValue = event.target.value;
+    onSelect(monthValue);
+    setSelectedMonth(monthValue);
+    sendDataToBackend(monthValue);
+
+    console.log("Month:", monthValue);
   };
 
   const sendDataToBackend = (month) => {
+    console.log("Selected month:", month);
     // Implement your logic to send the selected month to the backend
     // (e.g., using fetch or Axios)
-    console.log("Selected month:", month);
   };
 
   const months = [
@@ -42,8 +45,8 @@ function MonthSelectionDropdown() {
         <option className="dropdown-selection" value="">
           Select Month
         </option>
-        {months.map((month, index) => (
-          <option className="dropdown-selection" key={index} value={month}>
+        {months.map((month) => (
+          <option className="dropdown-selection" key={month} value={month}>
             {month}
           </option>
         ))}

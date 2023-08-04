@@ -19,28 +19,32 @@ function LogInForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="email">Email Address:</label>
+    <form onSubmit={handleSubmit} className="login-form">
+      <div class="input-group input-group-sm mb-3">
         <input
           type="text"
-          id="email"
+          class="form-control login-field"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-sm"
+          placeholder="Email"
           value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-
-      <div>
-        <label htmlFor="password">Password:</label>
+      <div class="input-group input-group-sm mb-4">
         <input
-          type="password"
-          id="password"
+          type="text"
+          class="form-control login-field"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-sm"
+          placeholder="Password"
           value={password}
-          onChange={(event) => setPassword(event.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-
-      <button type="submit">Submit</button>
+      <button className="login-submit" type="submit">
+        Submit
+      </button>
     </form>
   );
 }

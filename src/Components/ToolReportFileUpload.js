@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import Tooltip from "./Tooltip.js";
+import Tooltip from "../Pages/Dashboard/Tooltip.js";
 import { ReactComponent as ExcelImage } from "../Assets/ExcelImage.svg";
 
 const ToolReportFileUpload = ({ onSelect, ...otherProps }) => {

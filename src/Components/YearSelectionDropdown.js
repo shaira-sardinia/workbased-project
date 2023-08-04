@@ -1,40 +1,27 @@
 import React, { useState } from "react";
 
+//component for selecting Year from a dropdown
 function YearSelectionDropdown({ onSelect }) {
+  //using useState to hold selected year
   const [selectedYear, setSelectedYear] = useState("");
 
+  //handling year selection change
   const handleYearChange = (event) => {
     const yearValue = event.target.value;
     onSelect(yearValue);
     setSelectedYear(yearValue);
     sendDataToBackend(yearValue);
-
-    console.log("Year:", yearValue);
   };
 
+  //sending selected year to backend
+  //for demonstration purposes, logging the selected year
   const sendDataToBackend = (year) => {
     console.log("Selected year:", year);
-    // Implement your logic to send the selected year to the backend
-    //   fetch("/api/storeSelection", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({ month, year }),
-    //   })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       console.log("Data sent to backend and processed:", data);
-    //     })
-    //     .catch((error) => {
-    //       console.error("Error sending data to backend:", error);
-    //     });
-    //   // (e.g., using fetch or Axios)
-    //   console.log("Selected year:", year);
-    // };
+
+    //logic here
   };
 
-  // You can customize the range of years as needed
+  //range of years can be customized as required, currently starting from 2018
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 6 }, (_, index) => currentYear - index);
 

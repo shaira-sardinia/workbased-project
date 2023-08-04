@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import CustomAlert from "../Pages/Dashboard/CustomAlert";
 
+//component for displaying the reconciliation status and actions
 function StatusBar({
   selectedCadoFile,
   selectedToolFile,
   selectedMonth,
   selectedYear,
 }) {
+  //state variables to manage the status and animation
   const [reconciliationStatus, setReconciliationStatus] = useState("idle");
   const [status, setStatus] = useState("");
   const [errorDetails, setErrorDetails] = useState("");
@@ -15,11 +17,12 @@ function StatusBar({
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
 
+  //handling the "Reconcile" button click
   const handleReconcileClick = () => {
     console.log("selectedMonth:", selectedMonth);
     console.log("selectedYear:", selectedYear);
 
-    // Check if all required fields are complete
+    //checking if all required fields are complete
     if (
       !selectedCadoFile &&
       !selectedToolFile &&
@@ -37,92 +40,87 @@ function StatusBar({
       return;
     }
     if (!selectedCadoFile || !selectedToolFile) {
-      setAlertMessage("Please upload files you want to reconcile.");
+      setAlertMessage("Please select files you want to reconcile.");
       setShowAlert(true);
       return;
     }
 
-    setShowAnimation(true); // show progress animation
-    // Implement  logic to trigger the reconciliation process in the backend here
-    //Example: '/reconcile'
-    // const reconciliationEndpoint = "/reconcile";
-    //simulating random outcomes here (50/50 chance of either success or failure
+    //logic to trigger the reconciliation process in the backend here
+    const reconciliationEndpoint = "/reconcile";
+
+    //simulating random outcomes (50/50 chance of either success or failure for demo purposes
     const randomOutcome = Math.random() < 0.5 ? "success" : "failed";
     if (randomOutcome === "success") {
       setStatus("Successful");
       setErrorDetails("");
     } else {
       setStatus("Failed");
-      setErrorDetails("Check that date selection match with files."); //Backend will be able to provide more specific errors
+      setErrorDetails("Check that date selection match with files."); //backend will be able to provide more specific errors
     }
-    //updating reconciliationStatus state
-    setReconciliationStatus(randomOutcome);
+    setReconciliationStatus(randomOutcome); //updating reconciliation status
 
-    //delaying for 2 seconds before updating the status
+    // backend request to start the reconciliation process
+    // fetch(reconciliationEndpoint, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     cadoFile: selectedCadoFile,
+    //     toolFile: selectedToolFile,
+    //   }),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     // Process the response from the backend
+    //     if (data.success) {
+    //       setStatus("Successful");
+    //       setErrorDetails(""); // Clear any previous error details
+    //     } else {
+    //       setStatus("Failed");
+    //       setErrorDetails(data.error); // Update error details from the backend
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error during reconciliation:", error);
+    //     setStatus("Failed");
+    //     setErrorDetails("An error occurred during reconciliation.");
+    // });
+
+    //defining progress animations, 2-second delay before updating the status
+    setShowAnimation(true);
+
     setShowAnimationTimeout(
       setTimeout(() => {
         setReconciliationStatus(randomOutcome);
-        setShowAnimation(false); // hide the progress animation
+        setShowAnimation(false);
       }, 2000)
     );
 
     setReconciliationStatus("inProgress");
   };
 
-  //Make the backend request to start the reconciliation process
-  // fetch(reconciliationEndpoint, {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify({
-  //     cadoFile: selectedCadoFile,
-  //     toolFile: selectedToolFile,
-  //   }),
-  // })
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  //     // Process the response from the backend
-  //     if (data.success) {
-  //       setStatus("Successful");
-  //       setErrorDetails(""); // Clear any previous error details
-  //     } else {
-  //       setStatus("Failed");
-  //       setErrorDetails(data.error); // Update error details from the backend
-  //     }
-  //   })
-  //   .catch((error) => {
-  //     console.error("Error during reconciliation:", error);
-  //     setStatus("Failed");
-  //     setErrorDetails("An error occurred during reconciliation.");
-  // });
+  //closing the alert message
   const handleCloseAlert = () => {
     setShowAlert(false);
   };
 
+  //handling the "Restart" button click
   const handleRestartClick = () => {
     clearTimeout(setShowAnimationTimeout);
-    handleReconcileClick(); // Call the function to start the backend process again
+    handleReconcileClick();
   };
 
+  //handling the "Open Folder" button, with backend output folder has to be opened
   const handleOpenFolderClick = () => {
-    //at present cannot open a specific folder on client-side
-    //input element lets ysers select file from system
-    //change this/research this to open 'report' folder
-    // can replace 'path/to/output/folder' with actual path received from the backend
-    // const outputPath = "path/to/output/folder";
-    // const fileInput = document.createElement("input");
-    // fileInput.type = "file";
-    // fileInput.click();
+    const input = document.createElement("input");
+    input.type = "file";
+    input.directory = true;
+
+    input.click();
   };
 
-  //onchange event to handle selected file
-  // fileInput.onchange = (event) => {
-  //   const selectedFile = event.target.files[0];
-  //   //handle the selected file (e.g. read its contents etc)
-  //   console.log("Selected file:", selectedFile);
-  // };
-
+  //rendering different UI based on reconciliation status
   return (
     <>
       {reconciliationStatus === "idle" && (

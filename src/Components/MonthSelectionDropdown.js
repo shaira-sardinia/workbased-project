@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 
+//component for selecting Month from a dropdown
 function MonthSelectionDropdown({ onSelect }) {
+  //using useState to hold selected month
   const [selectedMonth, setSelectedMonth] = useState("");
 
+  //handling month selection change
   const handleMonthChange = (event) => {
     const monthValue = event.target.value;
     onSelect(monthValue);
     setSelectedMonth(monthValue);
     sendDataToBackend(monthValue);
-
-    console.log("Month:", monthValue);
   };
 
+  //sending selected month to backend
+  //for demonstration purposes, logging the selected month
   const sendDataToBackend = (month) => {
     console.log("Selected month:", month);
-    // Implement your logic to send the selected month to the backend
-    // (e.g., using fetch or Axios)
+
+    //logic here
   };
 
   const months = [

@@ -2,27 +2,21 @@ import React, { useState, useRef } from "react";
 import Tooltip from "../Pages/Dashboard/Tooltip.js";
 import { ReactComponent as ExcelImage } from "../Assets/ExcelImage.svg";
 
+//component for uploading CADO report files
 const CadoReportFileUpload = ({ onSelect, ...otherProps }) => {
+  //using useRef to create reference and interact with hidden file input element
+  //using useState to store currently selected CADO file and update when changed
   const fileInputField = useRef(null);
   const [selectedCadoFile, setSelectedCadoFile] = useState({});
 
-  // useEffect(() => {
-  //   //manually initializing bootstrap tootips
-  //   const tooltipTriggerList = document.querySelectorAll(
-  //     '[data-bs-toggle="tooltip"]'
-  //   );
-  //   const tooltipList = [...tooltipTriggerList].map(
-  //     (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
-  //   );
-  // });
-
+  //handling file selection
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     setSelectedCadoFile(file);
     onSelect(file);
   };
 
-  //event handlers to handle drag and drop behavior
+  //handling drag and drop behaviour
   const handleDrop = (event) => {
     event.preventDefault();
     const file = event.dataTransfer.files[0];
@@ -30,37 +24,10 @@ const CadoReportFileUpload = ({ onSelect, ...otherProps }) => {
     onSelect(file);
   };
 
+  //handling dragging over behaviour
   const handleDragOver = (event) => {
     event.preventDefault();
   };
-
-  // const handleFileSubmit = () => {
-  //   if (selectedFile) {
-  //     sendFileToBackend(selectedFile);
-  //   } else {
-  //     console.warn("No file selected.");
-  //   }
-  // };
-
-  // const sendFileToBackend = (file) => {
-  //   // Create a new FormData object
-  //   const formData = new FormData();
-  //   formData.append("file", file);
-
-  //   // Send the formData to backend endpoint
-  //   fetch("/upload", {
-  //     method: "POST",
-  //     body: formData,
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       // Handle any response from the backend
-  //       console.log("File uploaded successfully!", data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error uploading file:", error);
-  //     });
-  // };
 
   return (
     <div>
@@ -93,7 +60,6 @@ const CadoReportFileUpload = ({ onSelect, ...otherProps }) => {
         </div>
         <div>{selectedCadoFile && <p>{selectedCadoFile.name}</p>}</div>
       </div>
-      {/* <button onClick={handleFileSubmit}>Upload File</button> */}
     </div>
   );
 };

@@ -5,13 +5,16 @@ import CadoReportFileUpload from "../../Components/CadoReportFileUpload";
 import ToolReportFileUpload from "../../Components/ToolReportFileUpload";
 import StatusBar from "../../Components/StatusBar";
 
+//defining the parent component
 function Dashboard() {
+  //using useState hooks to re-render components or store files based on user's interaction
   const currentDate = new Date();
   const [selectedCadoFile, setSelectedCadoFile] = useState(null);
   const [selectedToolFile, setSelectedToolFile] = useState(null);
   const [selectedMonth, setSelectedMonth] = useState("");
   const [selectedYear, setSelectedYear] = useState("");
 
+  //formatting the date
   const options = {
     month: "long",
     day: "2-digit",
@@ -21,6 +24,7 @@ function Dashboard() {
   console.log("selectedMonth", selectedMonth);
   console.log("selectedYear", selectedYear);
 
+  //rendering the Dashboard page
   return (
     <div className="container">
       <div className="header row d-flex align-items-end py-2">

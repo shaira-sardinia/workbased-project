@@ -2,17 +2,21 @@ import React, { useState, useRef } from "react";
 import Tooltip from "../Pages/Dashboard/Tooltip.js";
 import { ReactComponent as ExcelImage } from "../Assets/ExcelImage.svg";
 
+//component for uploading Leave report files
 const ToolReportFileUpload = ({ onSelect, ...otherProps }) => {
+  //using useRef to create reference and interact with hidden file input element
+  //using useState to store currently selected Leave Report file and update when changed
   const fileInputField = useRef(null);
   const [selectedToolFile, setSelectedToolFile] = useState(null);
 
+  //handling file selection
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     setSelectedToolFile(file);
     onSelect(file);
   };
 
-  //event handlers to handle drag and drop behavior
+  //handling drag and drop behavior
   const handleDrop = (event) => {
     event.preventDefault();
     const file = event.dataTransfer.files[0];
@@ -20,37 +24,10 @@ const ToolReportFileUpload = ({ onSelect, ...otherProps }) => {
     onSelect(file);
   };
 
+  //handling dragging over behaviour
   const handleDragOver = (event) => {
     event.preventDefault();
   };
-
-  // const handleFileSubmit = () => {
-  //   if (selectedFile) {
-  //     sendFileToBackend(selectedFile);
-  //   } else {
-  //     console.warn("No file selected.");
-  //   }
-  // };
-
-  // const sendFileToBackend = (file) => {
-  //   // Create a new FormData object
-  //   const formData = new FormData();
-  //   formData.append("file", file);
-
-  //   // Send the formData to your backend endpoint
-  //   fetch("/upload", {
-  //     method: "POST",
-  //     body: formData,
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       // Handle any response from the backend
-  //       console.log("File uploaded successfully!", data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error uploading file:", error);
-  //     });
-  // };
 
   return (
     <div>

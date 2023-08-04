@@ -3,19 +3,21 @@ import { useNavigate } from "react-router-dom";
 
 function LogInForm() {
   //initializing useState with empty strings
+  //using useState hooks to handle user input for email and password values
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  //handleSubmit() triggered each time type="submit" is clicked, line 13 and line 34
+  //simulating login logic by a 1 -second delay for demonstration
+  //to be replaced with actual backend connection
   const handleSubmit = (event) => {
     event.preventDefault();
-    //login logic here, connect to backend
-    //once login is successful, redirects to dashboard
-    //For demonstration purposes, clicking submit will redirect after two-second delay
+
     setTimeout(() => {
       navigate("/dashboard");
     }, 1000);
+
+    //login logic here
   };
 
   return (

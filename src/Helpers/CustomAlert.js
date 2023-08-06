@@ -1,6 +1,6 @@
 import React from "react";
 
-//component to display customer alert message based on if-statements in StatusBar component
+//component to display custom alert message based on if-statements in StatusBar component
 function CustomAlert({ message, onClose }) {
   return (
     <div className="custom-alert">
@@ -12,7 +12,7 @@ function CustomAlert({ message, onClose }) {
         <strong>Error!</strong> {message}
         <button
           type="button"
-          class="btn-close"
+          className="btn-close"
           data-bs-dismiss="alert"
           aria-label="Close"
           onClick={onClose}

@@ -22,10 +22,10 @@ function LogInForm() {
 
   return (
     <form onSubmit={handleSubmit} className="login-form">
-      <div class="input-group input-group-sm mb-3">
+      <div className="input-group input-group-sm mb-3">
         <input
           type="text"
-          class="form-control login-field"
+          className="form-control login-field"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-sm"
           placeholder="Email"
@@ -33,10 +33,10 @@ function LogInForm() {
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-      <div class="input-group input-group-sm mb-4">
+      <div className="input-group input-group-sm mb-4">
         <input
-          type="text"
-          class="form-control login-field"
+          type="password"
+          className="form-control login-field"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-sm"
           placeholder="Password"

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import * as bootstrap from "bootstrap";
 
 //component for rendering tooltip wth text
-const Tooltip = ({ tooltiptext }) => {
+const Tooltip = ({ tooltipText }) => {
   useEffect(() => {
     //manually initializing bootstrap tooltips
     const tooltipTriggerList = document.querySelectorAll(
@@ -35,7 +35,7 @@ const Tooltip = ({ tooltiptext }) => {
         height="16"
         className="tooltip-svg"
         data-bs-toggle="tooltip"
-        data-bs-title={tooltiptext}
+        data-bs-title={tooltipText}
         data-bs-custom-class="custom-tooltip"
         data-bs-placement="right"
       >

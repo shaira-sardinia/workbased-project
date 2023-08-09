@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CustomAlert from "../Pages/Dashboard/CustomAlert";
+import CustomAlert from "../Helpers/CustomAlert.js";
 
 //component for displaying the reconciliation status and actions
 function StatusBar({

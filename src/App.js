@@ -5,7 +5,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 
 function App() {
   return (
-    //use of Router is to supply browser with asynchronous URL that corresponds to the data shown on webpage
+    //using Router is to supply browser with asynchronous URL that corresponds to the data shown on webpage
     //when user enters URL, the route equals one of the pathways in the route folder, and user is sent to that route
     <Router>
       <Routes>

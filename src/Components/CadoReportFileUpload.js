@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import Tooltip from "../Pages/Dashboard/Tooltip.js";
+import Tooltip from "../Helpers/Tooltip.js";
 import { ReactComponent as ExcelImage } from "../Assets/ExcelImage.svg";
 
 //component for uploading CADO report files
@@ -32,7 +32,7 @@ const CadoReportFileUpload = ({ onSelect, ...otherProps }) => {
   return (
     <div>
       <label>Select Timesheet File</label>
-      <Tooltip tooltiptext="Timesheet Files are Cado Reports in XLSM format. Filename must contain the Month and Year of data." />
+      <Tooltip tooltipText="Timesheet Files are Cado Reports in XLSM format. Filename must contain the Month and Year of data." />
       <div
         onDrop={handleDrop}
         onDragOver={handleDragOver}

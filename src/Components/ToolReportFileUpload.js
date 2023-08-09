@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import Tooltip from "../Pages/Dashboard/Tooltip.js";
+import Tooltip from "../Helpers/Tooltip.js";
 import { ReactComponent as ExcelImage } from "../Assets/ExcelImage.svg";
 
 //component for uploading Leave report files
@@ -32,7 +32,7 @@ const ToolReportFileUpload = ({ onSelect, ...otherProps }) => {
   return (
     <div>
       <label>Select Leave Report File</label>
-      <Tooltip tooltiptext="Leave Report Files are reports from PowerApps in XLSM format. Filename must contain the Month and Year of the data." />
+      <Tooltip tooltipText="Leave Report Files are reports from PowerApps in XLSM format. Filename must contain the Month and Year of the data." />
       <div
         onDrop={handleDrop}
         onDragOver={handleDragOver}

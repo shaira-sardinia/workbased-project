@@ -23,7 +23,7 @@
   padding-left: 7rem;
   padding-right: 7rem;
   height: 85vh;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 /* TEXT STYLING */
